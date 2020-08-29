@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.chatapp_main.mapper.UserMapper">
+
+  <select id="findUserByUsernam" resultType="com.example.chatapp_main.pojo.User">
+    select * from user where username=#{username}
+  </select>
+
+  <insert id="insertSelective" parameterType="com.example.chatapp_main.pojo.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="imgurl != null">
+        imgurl,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username},
+      </if>
+      <if test="password != null">
+        #{password},
+      </if>
+      <if test="nickname != null">
+        #{nickname},
+      </if>
+      <if test="imgurl != null">
+        #{imgurl},
+      </if>
+      <if test="tel != null">
+        #{tel},
+      </if>
+      <if test="address != null">
+        #{address},
+      </if>
+    </trim>
+  </insert>
+</mapper>
