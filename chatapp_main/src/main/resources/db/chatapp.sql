@@ -1,0 +1,17 @@
+#创建数据库chat
+CREATE DATABASE IF NOT EXISTS chat;
+USE chat;
+SHOW TABLES;
+
+#新建用户表
+CREATE TABLE `user` (
+  `id` INT(20) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
+  `username` VARCHAR(50) NOT NULL COMMENT '用户名',
+  `nickname` VARCHAR(50) DEFAULT NULL COMMENT '昵称',
+  `imgurl` VARCHAR(500) DEFAULT NULL COMMENT '用户头像地址',
+  `password` VARCHAR(150) NOT NULL COMMENT '用户密码',
+  `tel` VARCHAR(13) DEFAULT NULL COMMENT '电话号码',
+  `address` VARCHAR(150) DEFAULT NULL COMMENT '地址',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=INNODB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8

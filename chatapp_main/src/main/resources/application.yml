@@ -1,0 +1,21 @@
+#端口
+server:
+  port: 8090
+  #路由配置
+  servlet:
+    context-path: /chatapp/main
+#数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/chat?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 123456
+    #使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+#整合mybatis
+mybatis:
+  #注意：一定要对应mapper映射xml文件的所在路径
+  mapper-locations: classpath:mapper/*.xml
+  # 注意：对应实体类的路径
+  type-aliases-package: com.example.chatapp_main.pojo
