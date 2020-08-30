@@ -36,4 +36,22 @@ public class UserController {
         return response;
     }
 
+    @PostMapping("/login")
+    public Response login(@RequestBody Map map){
+        String username = (String) map.get("username");
+        String password = (String) map.get("password");
+        Response response = new Response();
+        if(TextUtils.isEmpty(username)||TextUtils.isEmpty(password)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            boolean login = userService.login(username,password);
+            if(login){
+                response.setStatus(Status.OK);
+            }else{
+                response.setStatus(Status.USERNAMEORPADERROR);
+            }
+        }
+        return response;
+    }
+
 }

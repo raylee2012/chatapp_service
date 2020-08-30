@@ -6,6 +6,10 @@
     select * from user where username=#{username}
   </select>
 
+  <select id="checkUsernameAndPassword" resultType="com.example.chatapp_main.pojo.User">
+    select * from user where username=#{username} and password=#{password}
+  </select>
+
   <insert id="insertSelective" parameterType="com.example.chatapp_main.pojo.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">

@@ -22,4 +22,8 @@ public class UserDao {
         userMapper.insertSelective(user);
     }
 
+    public User login(String username,String password){
+        return userMapper.checkUsernameAndPassword(username,password);
+    }
+
 }

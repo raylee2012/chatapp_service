@@ -10,4 +10,6 @@ public interface UserMapper {
     User findUserByUsernam(@Param("username") String username);
 
     void insertSelective(User user);
+
+    User checkUsernameAndPassword(@Param("username") String username,@Param("password") String password);
 }
