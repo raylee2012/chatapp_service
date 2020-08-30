@@ -6,9 +6,25 @@
     select * from user where username=#{username}
   </select>
 
+  <select id="selectUserByPrimaryKey" resultType="com.example.chatapp_main.pojo.User">
+    select * from user where id=#{id}
+  </select>
+
   <select id="checkUsernameAndPassword" resultType="com.example.chatapp_main.pojo.User">
     select * from user where username=#{username} and password=#{password}
   </select>
+
+  <update id="updateUserInfo" parameterType="com.example.chatapp_main.pojo.User">
+        update user
+      <trim prefix="set" suffixOverrides=",">
+        <if test="password!=null">password=#{password},</if>
+        <if test="nickname!=null">nickname=#{nickname},</if>
+        <if test="imgurl!=null">imgurl=#{imgurl},</if>
+        <if test="tel!=null">tel=#{tel},</if>
+        <if test="address!=null">address=#{address},</if>
+      </trim>
+      WHERE id=#{id}
+  </update>
 
   <insert id="insertSelective" parameterType="com.example.chatapp_main.pojo.User">
     insert into user

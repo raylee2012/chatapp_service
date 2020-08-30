@@ -10,6 +10,16 @@ public class User {
     private String tel;// '电话号码',
     private String address;//'地址',
 
+    public User() {
+    }
+
+    public User(Integer id,String nickname, String password, String tel, String address) {
+        this.id = id;
+        this.nickname = nickname;
+        this.password = password;
+        this.tel = tel;
+        this.address = address;
+    }
 
     public Integer getId() {
         return id;

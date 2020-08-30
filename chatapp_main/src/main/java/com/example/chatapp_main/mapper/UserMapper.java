@@ -12,4 +12,8 @@ public interface UserMapper {
     void insertSelective(User user);
 
     User checkUsernameAndPassword(@Param("username") String username,@Param("password") String password);
+
+    User selectUserByPrimaryKey(@Param("id") int id);
+
+    void updateUserInfo(User user);
 }

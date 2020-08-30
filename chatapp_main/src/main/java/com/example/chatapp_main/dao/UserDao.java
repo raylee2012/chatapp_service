@@ -26,4 +26,12 @@ public class UserDao {
         return userMapper.checkUsernameAndPassword(username,password);
     }
 
+    public User selectUserByPrimaryKey(int id){
+        return userMapper.selectUserByPrimaryKey(id);
+    }
+
+    public void updateUserInfo(User user){
+         userMapper.updateUserInfo(user);
+    }
+
 }

@@ -33,4 +33,15 @@ public class UserServiceImpl implements UserService{
         }
         return false;
     }
+
+    @Override
+    public void updateUserInfo(User user) {
+        userDao.updateUserInfo(user);
+    }
+
+    @Override
+    public User selectUserByPrimaryKey(int id) {
+
+        return userDao.selectUserByPrimaryKey(id);
+    }
 }
