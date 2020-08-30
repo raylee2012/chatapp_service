@@ -12,4 +12,6 @@ public interface UserService {
     void updateUserInfo(User user);
 
     User selectUserByPrimaryKey(int id);
+
+    User findUserByUsernam(String username);
 }

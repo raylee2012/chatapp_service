@@ -52,6 +52,7 @@ public class UserController {
             boolean login = userService.login(username,password);
             if(login){
                 response.setStatus(Status.OK);
+                response.setData(userService.findUserByUsernam(username));
             }else{
                 response.setStatus(Status.USERNAMEORPADERROR);
             }
@@ -60,7 +61,8 @@ public class UserController {
     }
 
     @PostMapping("/updateUserInfo")
-    public Response updateUserInfo(@RequestParam(value = "id",required=true,  defaultValue = "0") int id, @RequestParam(value = "nickname",  required=false) String nickname,
+    public Response updateUserInfo(@RequestHeader("token") String token,
+                                    @RequestParam(value = "id",required=true,  defaultValue = "0") int id, @RequestParam(value = "nickname",  required=false) String nickname,
                                    @RequestParam(value = "password",required=false) String password, @RequestParam(value = "tel", required=false)String tel,
                                    @RequestParam(value ="tel",  required=false)String address, @RequestParam(value = "file",  required=false) MultipartFile file){
         Response response = new Response();

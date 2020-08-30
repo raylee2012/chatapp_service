@@ -10,6 +10,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserDao userDao;
 
+
+
     @Override
     public boolean userNameIsRegister(String username) {
         User user = userDao.findUserByUsernam(username);
@@ -43,5 +45,10 @@ public class UserServiceImpl implements UserService{
     public User selectUserByPrimaryKey(int id) {
 
         return userDao.selectUserByPrimaryKey(id);
+    }
+
+    @Override
+    public User findUserByUsernam(String username) {
+        return userDao.findUserByUsernam(username);
     }
 }
