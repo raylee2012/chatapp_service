@@ -8,7 +8,8 @@ public enum  Status {
     PARAMILLEGAL("error","参数不合法"),
     NOLOGINNAME("error", "请提供用户名"),
     NOWEBSITENAME("error", "请提供网站名称"),
-    ERROR("error","未知错误");
+    ERROR("error","未知错误"),
+    TOKENINVALID("error","token失效");
 
     private String key;
     private String value;
