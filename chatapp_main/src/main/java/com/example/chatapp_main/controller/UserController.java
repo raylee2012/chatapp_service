@@ -86,4 +86,19 @@ public class UserController {
         return response;
     }
 
+    @PostMapping("/findUser")
+    public Response addContact(@RequestBody Map map){
+        Response response = new Response();
+        String user_name = (String) map.get("user_name");
+        if(TextUtils.isEmpty(user_name)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            User user = userService.findUserByUsername(user_name);
+            response.setStatus(Status.OK);
+            response.setData(user);
+        }
+
+        return response;
+    }
+
 }
