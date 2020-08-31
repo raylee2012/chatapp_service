@@ -4,11 +4,13 @@ server:
   #路由配置
   servlet:
     context-path: /chatapp/main
+  tomcat:
+    uri-encoding: UTF-8
 #数据库配置
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/chat?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/chat?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
     username: root
     password: 123456
     #使用druid数据源

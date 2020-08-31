@@ -5,13 +5,29 @@ SHOW TABLES;
 
 #新建用户表
 CREATE TABLE `user` (
-  `id` INT(20) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
-  `username` VARCHAR(50) NOT NULL COMMENT '用户名',
-  `nickname` VARCHAR(50) DEFAULT NULL COMMENT '昵称',
+  `user_id` VARCHAR(50) NOT NULL COMMENT '用户编号',
+  `user_name` VARCHAR(50) NOT NULL COMMENT '用户名',
+  `nick_name` VARCHAR(50) DEFAULT NULL COMMENT '昵称',
   `imgurl` VARCHAR(500) DEFAULT NULL COMMENT '用户头像地址',
   `password` VARCHAR(150) NOT NULL COMMENT '用户密码',
   `tel` VARCHAR(13) DEFAULT NULL COMMENT '电话号码',
   `address` VARCHAR(150) DEFAULT NULL COMMENT '地址',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=INNODB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8
+  `create_time` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+  `update_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name` (`user_name`)
+) ENGINE=INNODB  DEFAULT CHARSET=utf8
+
+#新建联系人表
+CREATE TABLE `contact` (
+  `contact_id` VARCHAR(50) NOT NULL COMMENT '联系人编号',
+  `applicant_id` VARCHAR(50) NOT NULL COMMENT '申请人id',
+  `receiver_id` VARCHAR(50) DEFAULT NULL COMMENT '接收人id',
+  `application_content` VARCHAR(500) DEFAULT NULL COMMENT '申请内容',
+  `password` VARCHAR(150) NOT NULL COMMENT '用户密码',
+  `status` CHAR (1) DEFAULT NULL COMMENT '0未通过,1已通过,2已拒绝',
+  `create_time` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+  `update_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`contact_id`)
+) ENGINE=INNODB  DEFAULT CHARSET=utf8
+

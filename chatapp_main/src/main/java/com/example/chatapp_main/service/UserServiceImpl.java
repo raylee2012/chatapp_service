@@ -5,6 +5,8 @@ import com.example.chatapp_main.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
@@ -13,8 +15,8 @@ public class UserServiceImpl implements UserService{
 
 
     @Override
-    public boolean userNameIsRegister(String username) {
-        User user = userDao.findUserByUsernam(username);
+    public boolean userNameIsRegister(String user_name) {
+        User user = userDao.findUserByUsername(user_name);
         if(user!=null){
             return true;
         }
@@ -22,14 +24,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void register(String username, String password) {
-        userDao.register(username, password);
+    public void register(String user_name, String password) {
+        userDao.register(user_name, password);
 
     }
 
     @Override
-    public boolean login(String username, String password) {
-        User user = userDao.login(username, password);
+    public boolean login(String user_name, String password) {
+        User user = userDao.login(user_name, password);
         if(user!=null){
             return true;
         }
@@ -38,17 +40,18 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void updateUserInfo(User user) {
+        user.setUpdate_time(new Date());
         userDao.updateUserInfo(user);
     }
 
     @Override
-    public User selectUserByPrimaryKey(int id) {
+    public User selectUserByPrimaryKey(String user_id) {
 
-        return userDao.selectUserByPrimaryKey(id);
+        return userDao.selectUserByPrimaryKey(user_id);
     }
 
     @Override
-    public User findUserByUsernam(String username) {
-        return userDao.findUserByUsernam(username);
+    public User findUserByUsername(String user_name) {
+        return userDao.findUserByUsername(user_name);
     }
 }

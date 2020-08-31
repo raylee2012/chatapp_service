@@ -23,18 +23,18 @@ public class UserController {
 
     @PostMapping("/register")
     public Response register(@RequestBody Map map){
-        String username = (String) map.get("username");
+        String user_name = (String) map.get("user_name");
         String password = (String) map.get("password");
 
         Response response = new Response();
-        if(TextUtils.isEmpty(username)||TextUtils.isEmpty(password)){
+        if(TextUtils.isEmpty(user_name)||TextUtils.isEmpty(password)){
             response.setStatus(Status.PARAMILLEGAL);
         }else{
-            boolean nameIsRegister = userService.userNameIsRegister(username);
+            boolean nameIsRegister = userService.userNameIsRegister(user_name);
             if(nameIsRegister){
                 response.setStatus(Status.USERISREGISTER);
             }else{
-                userService.register(username,password);
+                userService.register(user_name,password);
                 response.setStatus(Status.OK);
             }
         }
@@ -43,7 +43,7 @@ public class UserController {
 
     @PostMapping("/login")
     public Response login(@RequestBody Map map){
-        String username = (String) map.get("username");
+        String username = (String) map.get("user_name");
         String password = (String) map.get("password");
         Response response = new Response();
         if(TextUtils.isEmpty(username)||TextUtils.isEmpty(password)){
@@ -52,7 +52,7 @@ public class UserController {
             boolean login = userService.login(username,password);
             if(login){
                 response.setStatus(Status.OK);
-                response.setData(userService.findUserByUsernam(username));
+                response.setData(userService.findUserByUsername(username));
             }else{
                 response.setStatus(Status.USERNAMEORPADERROR);
             }
@@ -62,26 +62,25 @@ public class UserController {
 
     @PostMapping("/updateUserInfo")
     public Response updateUserInfo(@RequestHeader("token") String token,
-                                    @RequestParam(value = "id",required=true,  defaultValue = "0") int id, @RequestParam(value = "nickname",  required=false) String nickname,
+                                    @RequestParam(value = "user_id") String user_id, @RequestParam(value = "nick_name",  required=false) String nickname,
                                    @RequestParam(value = "password",required=false) String password, @RequestParam(value = "tel", required=false)String tel,
-                                   @RequestParam(value ="tel",  required=false)String address, @RequestParam(value = "file",  required=false) MultipartFile file){
+                                   @RequestParam(value ="address",  required=false)String address, @RequestParam(value = "file",  required=false) MultipartFile file){
         Response response = new Response();
-        User user = new User(id, nickname, password, tel, address);
-        if(id<=0){
+        User user = new User(user_id, nickname, password, tel, address);
+        if(TextUtils.isEmpty(user_id)){
             response.setStatus(Status.PARAMILLEGAL);
         }else{
-            User userByPrimaryKey = userService.selectUserByPrimaryKey(id);
+            User userByPrimaryKey = userService.selectUserByPrimaryKey(user_id);
             if(userByPrimaryKey==null){
                 response.setStatus(Status.NOTFOUNTUSER);
             }else {
-                UploadFileResponse uploadFile=null;
                 if(file!=null){
-                    uploadFile = fileController.uploadFile(file);
+                    UploadFileResponse uploadFile = fileController.uploadFile(file);
                     user.setImgurl(uploadFile.getFileDownloadUri());
                 }
                 userService.updateUserInfo(user);
                 response.setStatus(Status.OK);
-                response.setData(userService.selectUserByPrimaryKey(user.getId()));
+                response.setData(userService.selectUserByPrimaryKey(user.getUser_id()));
             }
         }
         return response;
