@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.chatapp_main.mapper.ContactMapper">
+
+  <select id="selectContactByContactores" resultType="com.example.chatapp_main.pojo.Contact">
+    select * from contact where applicant_id=#{applicant_id} and receiver_id=#{receiver_id}
+  </select>
+
+  <select id="selectContactByPrimaryKey" resultType="com.example.chatapp_main.pojo.Contact">
+    select * from contact where contact_id=#{contact_id}
+  </select>
+
+  <update id="updateContactInfo" parameterType="com.example.chatapp_main.pojo.Contact">
+        update contact
+      <trim prefix="set" suffixOverrides=",">
+        <if test="applicant_id!=null">applicant_id=#{applicant_id},</if>
+        <if test="receiver_id!=null">receiver_id=#{receiver_id},</if>
+        <if test="application_content!=null">application_content=#{application_content},</if>
+        <if test="status!=null">status=#{status},</if>
+        <if test="update_time!=null">update_time=#{update_time},</if>
+      </trim>
+      WHERE contact_id=#{contact_id}
+  </update>
+
+  <insert id="insertSelective" parameterType="com.example.chatapp_main.pojo.Contact">
+    insert into contact
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contact_id != null">
+        contact_id,
+      </if>
+      <if test="applicant_id != null">
+        applicant_id,
+      </if>
+      <if test="receiver_id != null">
+        receiver_id,
+      </if>
+      <if test="application_content != null">
+        application_content,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contact_id != null">
+        #{contact_id},
+      </if>
+      <if test="applicant_id != null">
+        #{applicant_id},
+      </if>
+      <if test="receiver_id != null">
+        #{receiver_id},
+      </if>
+      <if test="application_content != null">
+        #{application_content},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="create_time != null">
+        #{create_time},
+      </if>
+      <if test="update_time != null">
+        #{update_time},
+      </if>
+    </trim>
+  </insert>
+</mapper>

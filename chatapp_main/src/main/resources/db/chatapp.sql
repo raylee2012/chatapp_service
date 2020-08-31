@@ -24,7 +24,6 @@ CREATE TABLE `contact` (
   `applicant_id` VARCHAR(50) NOT NULL COMMENT '申请人id',
   `receiver_id` VARCHAR(50) DEFAULT NULL COMMENT '接收人id',
   `application_content` VARCHAR(500) DEFAULT NULL COMMENT '申请内容',
-  `password` VARCHAR(150) NOT NULL COMMENT '用户密码',
   `status` CHAR (1) DEFAULT NULL COMMENT '0未通过,1已通过,2已拒绝',
   `create_time` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
