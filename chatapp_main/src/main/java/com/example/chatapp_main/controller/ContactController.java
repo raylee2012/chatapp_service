@@ -57,9 +57,8 @@ public class ContactController {
         if(TextUtils.isEmpty(receiver_id)){
             response.setStatus(Status.PARAMILLEGAL);
         }else{
-            //contactService.updateContactStatus(contact_id,status);
             response.setStatus(Status.OK);
-           // response.setData(contactService.selectContactByPrimaryKey(contact_id));
+            response.setData(contactService.getApplicantList(receiver_id));
         }
         return response;
     }

@@ -1,9 +1,10 @@
 package com.example.chatapp_main.mapper;
 
 import com.example.chatapp_main.pojo.Contact;
-import com.example.chatapp_main.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface ContactMapper {
@@ -15,4 +16,6 @@ public interface ContactMapper {
     Contact selectContactByContactores(@Param("applicant_id") String applicant_id,@Param("receiver_id") String receiver_id);
 
     void updateContactInfo(Contact contact);
+
+    List<Contact> getApplicantList(@Param("receiver_id") String receiver_id);
 }

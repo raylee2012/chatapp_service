@@ -3,6 +3,7 @@ package com.example.chatapp_main.pojo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Contact {
 
@@ -15,6 +16,16 @@ public class Contact {
     private Date create_time; //  '创建时间',
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh", timezone = "GMT+8")
     private Date update_time; //  '更新时间',
+
+    private List<User> user;
+
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
 
     public String getContact_id() {
         return contact_id;

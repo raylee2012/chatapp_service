@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ContactServiceImpl implements ContactService{
@@ -41,5 +43,10 @@ public class ContactServiceImpl implements ContactService{
     @Override
     public Contact selectContactByPrimaryKey(String contact_id) {
         return contactDao.selectContactByPrimaryKey(contact_id);
+    }
+
+    @Override
+    public List<Contact> getApplicantList(String receiver_id) {
+        return contactDao.getApplicantList(receiver_id);
     }
 }

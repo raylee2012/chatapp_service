@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Component
 public class ContactDao {
@@ -40,4 +42,7 @@ public class ContactDao {
         contactMapper.updateContactInfo(contact);
     }
 
+    public List<Contact> getApplicantList(String receiver_id){
+        return contactMapper.getApplicantList(receiver_id);
+    }
 }
