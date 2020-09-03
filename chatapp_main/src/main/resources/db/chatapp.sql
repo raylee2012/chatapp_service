@@ -30,3 +30,15 @@ CREATE TABLE `contact` (
   PRIMARY KEY (`contact_id`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8
 
+#新建群组表====设计中
+CREATE TABLE `group` (
+  `group_id` VARCHAR(50) NOT NULL COMMENT '群编号',
+  `group_name` VARCHAR(50) DEFAULT NULL COMMENT '群名称',
+  `group_notice` VARCHAR(500) DEFAULT NULL COMMENT '群公告',
+  `group_note` VARCHAR(500) DEFAULT NULL COMMENT '群备注',
+  `create_user_id` VARCHAR(50) NOT NULL COMMENT '创建人id',
+  `create_time` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+  `update_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`group_id`)
+) ENGINE=INNODB  DEFAULT CHARSET=utf8
+
