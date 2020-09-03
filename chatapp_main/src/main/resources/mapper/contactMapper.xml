@@ -14,12 +14,10 @@
     <result property="application_content" column="application_content"/>
     <result property="status" column="status"/>
     <result property="update_time" column="update_time"/>
-    <association  property="applicantUser"  javaType="com.example.chatapp_main.entity.User">
-      <result property="user_id" column="user_id"/>
-      <result property="user_name" column="user_name"/>
-      <result property="imgurl" column="imgurl"/>
-      <result property="nick_name" column="nick_name"/>
-    </association>
+    <result property="user_id" column="user_id"/>
+    <result property="user_name" column="user_name"/>
+    <result property="imgurl" column="imgurl"/>
+    <result property="nick_name" column="nick_name"/>
   </resultMap>
 
 
