@@ -6,21 +6,9 @@
     select * from contact where applicant_id=#{applicant_id} and receiver_id=#{receiver_id}
   </select>
 
-  <select id="getApplicantList" resultMap="applicant">
+  <select id="getApplicantList" resultType="com.example.chatapp_main.entity.vo.Applicant">
     SELECT user.`user_id`,user.`user_name`,user.`imgurl`,user.`nick_name`,contact.`application_content`,contact.`status`,contact.`update_time` FROM user,contact WHERE user.`user_id`=contact.`applicant_id` AND contact.`receiver_id`=#{receiver_id};
   </select>
-
-  <resultMap id="applicant" type="com.example.chatapp_main.entity.vo.Applicant">
-    <result property="application_content" column="application_content"/>
-    <result property="status" column="status"/>
-    <result property="update_time" column="update_time"/>
-    <result property="user_id" column="user_id"/>
-    <result property="user_name" column="user_name"/>
-    <result property="imgurl" column="imgurl"/>
-    <result property="nick_name" column="nick_name"/>
-  </resultMap>
-
-
 
   <select id="selectContactByPrimaryKey" resultType="com.example.chatapp_main.entity.Contact">
     select * from contact where contact_id=#{contact_id}
