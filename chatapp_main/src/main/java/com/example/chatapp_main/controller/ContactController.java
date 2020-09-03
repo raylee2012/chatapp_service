@@ -1,7 +1,7 @@
 package com.example.chatapp_main.controller;
 
-import com.example.chatapp_main.bean.Response;
-import com.example.chatapp_main.bean.Status;
+import com.example.chatapp_main.core.Response;
+import com.example.chatapp_main.core.Status;
 import com.example.chatapp_main.service.ContactService;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;

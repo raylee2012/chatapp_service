@@ -30,7 +30,7 @@ mybatis:
   #注意：一定要对应mapper映射xml文件的所在路径
   mapper-locations: classpath:mapper/*.xml
   # 注意：对应实体类的路径
-  type-aliases-package: com.example.chatapp_main.pojo
+  type-aliases-package: com.example.chatapp_main.entity
 
 ## 文件存储所需参数
 # 所有通过 REST APIs 上传的文件都将存储在此目录下

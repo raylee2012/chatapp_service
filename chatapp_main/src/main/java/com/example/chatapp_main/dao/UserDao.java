@@ -1,7 +1,7 @@
 package com.example.chatapp_main.dao;
 
 import com.example.chatapp_main.mapper.UserMapper;
-import com.example.chatapp_main.pojo.User;
+import com.example.chatapp_main.entity.User;
 import com.example.chatapp_main.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

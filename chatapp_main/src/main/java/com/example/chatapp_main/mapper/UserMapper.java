@@ -1,6 +1,6 @@
 package com.example.chatapp_main.mapper;
 
-import com.example.chatapp_main.pojo.User;
+import com.example.chatapp_main.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

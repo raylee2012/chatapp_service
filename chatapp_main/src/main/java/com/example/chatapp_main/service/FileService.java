@@ -1,7 +1,7 @@
 package com.example.chatapp_main.service;
 
 import com.example.chatapp_main.exception.FileException;
-import com.example.chatapp_main.pojo.FileProperties;
+import com.example.chatapp_main.config.FileProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;

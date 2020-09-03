@@ -1,4 +1,4 @@
-package com.example.chatapp_main.pojo;
+package com.example.chatapp_main.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

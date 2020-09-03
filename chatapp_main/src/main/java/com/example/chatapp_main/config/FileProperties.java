@@ -1,4 +1,4 @@
-package com.example.chatapp_main.pojo;
+package com.example.chatapp_main.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

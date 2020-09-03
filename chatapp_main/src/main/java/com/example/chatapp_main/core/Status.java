@@ -1,4 +1,4 @@
-package com.example.chatapp_main.bean;
+package com.example.chatapp_main.core;
 
 public enum  Status {
     OK("success", "成功"),

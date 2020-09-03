@@ -1,17 +1,14 @@
 package com.example.chatapp_main.dao;
 
 import com.example.chatapp_main.mapper.ContactMapper;
-import com.example.chatapp_main.mapper.UserMapper;
-import com.example.chatapp_main.pojo.Applicant;
-import com.example.chatapp_main.pojo.Contact;
-import com.example.chatapp_main.pojo.User;
+import com.example.chatapp_main.entity.vo.Applicant;
+import com.example.chatapp_main.entity.Contact;
 import com.example.chatapp_main.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class ContactDao {

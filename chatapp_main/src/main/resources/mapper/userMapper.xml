@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.chatapp_main.mapper.UserMapper">
 
-  <select id="findUserByUsername" resultType="com.example.chatapp_main.pojo.User">
+  <select id="findUserByUsername" resultType="com.example.chatapp_main.entity.User">
     select * from user where user_name=#{user_name}
   </select>
 
-  <select id="selectUserByPrimaryKey" resultType="com.example.chatapp_main.pojo.User">
+  <select id="selectUserByPrimaryKey" resultType="com.example.chatapp_main.entity.User">
     select * from user where user_id=#{user_id}
   </select>
 
-  <select id="checkUsernameAndPassword" resultType="com.example.chatapp_main.pojo.User">
+  <select id="checkUsernameAndPassword" resultType="com.example.chatapp_main.entity.User">
     select * from user where user_name=#{user_name} and password=#{password}
   </select>
 
-  <update id="updateUserInfo" parameterType="com.example.chatapp_main.pojo.User">
+  <update id="updateUserInfo" parameterType="com.example.chatapp_main.entity.User">
         update user
       <trim prefix="set" suffixOverrides=",">
         <if test="password!=null">password=#{password},</if>
@@ -27,7 +27,7 @@
       WHERE user_id=#{user_id}
   </update>
 
-  <insert id="insertSelective" parameterType="com.example.chatapp_main.pojo.User">
+  <insert id="insertSelective" parameterType="com.example.chatapp_main.entity.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="user_id != null">

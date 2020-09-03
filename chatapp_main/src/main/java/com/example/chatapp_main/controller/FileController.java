@@ -1,6 +1,6 @@
 package com.example.chatapp_main.controller;
 
-import com.example.chatapp_main.bean.UploadFileResponse;
+import com.example.chatapp_main.core.UploadFileResponse;
 import com.example.chatapp_main.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
