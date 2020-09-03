@@ -1,5 +1,6 @@
 package com.example.chatapp_main.dao;
 
+import com.example.chatapp_main.entity.vo.FindUser;
 import com.example.chatapp_main.mapper.UserMapper;
 import com.example.chatapp_main.entity.User;
 import com.example.chatapp_main.util.StringUtil;
@@ -14,7 +15,7 @@ public class UserDao {
     @Autowired
     UserMapper userMapper;
 
-    public User findUserByUsername(String user_name){
+    public FindUser findUserByUsername(String user_name){
         return userMapper.findUserByUsername(user_name);
     }
 

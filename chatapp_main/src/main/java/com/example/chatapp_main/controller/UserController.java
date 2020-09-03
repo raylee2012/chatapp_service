@@ -4,6 +4,7 @@ import com.example.chatapp_main.core.Status;
 import com.example.chatapp_main.core.Response;
 import com.example.chatapp_main.core.UploadFileResponse;
 import com.example.chatapp_main.entity.User;
+import com.example.chatapp_main.entity.vo.FindUser;
 import com.example.chatapp_main.service.UserService;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +94,7 @@ public class UserController {
         if(TextUtils.isEmpty(user_name)){
             response.setStatus(Status.PARAMILLEGAL);
         }else{
-            User user = userService.findUserByUsername(user_name);
+            FindUser user = userService.findUserByUsername(user_name);
             response.setStatus(Status.OK);
             response.setData(user);
         }

@@ -1,13 +1,14 @@
 package com.example.chatapp_main.mapper;
 
 import com.example.chatapp_main.entity.User;
+import com.example.chatapp_main.entity.vo.FindUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserMapper {
 
-    User findUserByUsername(@Param("user_name") String username);
+    FindUser findUserByUsername(@Param("user_name") String username);
 
     void insertSelective(User user);
 

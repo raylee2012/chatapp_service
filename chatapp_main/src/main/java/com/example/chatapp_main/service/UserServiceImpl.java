@@ -2,6 +2,7 @@ package com.example.chatapp_main.service;
 
 import com.example.chatapp_main.dao.UserDao;
 import com.example.chatapp_main.entity.User;
+import com.example.chatapp_main.entity.vo.FindUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean userNameIsRegister(String user_name) {
-        User user = userDao.findUserByUsername(user_name);
+        FindUser user = userDao.findUserByUsername(user_name);
         if(user!=null){
             return true;
         }
@@ -51,7 +52,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findUserByUsername(String user_name) {
+    public FindUser findUserByUsername(String user_name) {
         return userDao.findUserByUsername(user_name);
     }
 }

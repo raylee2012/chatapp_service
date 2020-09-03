@@ -1,6 +1,7 @@
 package com.example.chatapp_main.service;
 
 import com.example.chatapp_main.entity.User;
+import com.example.chatapp_main.entity.vo.FindUser;
 
 public interface UserService {
     boolean userNameIsRegister(String username);
@@ -13,5 +14,5 @@ public interface UserService {
 
     User selectUserByPrimaryKey(String user_id);
 
-    User findUserByUsername(String username);
+    FindUser findUserByUsername(String username);
 }
