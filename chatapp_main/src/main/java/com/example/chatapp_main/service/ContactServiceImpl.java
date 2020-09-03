@@ -1,6 +1,7 @@
 package com.example.chatapp_main.service;
 
 import com.example.chatapp_main.dao.ContactDao;
+import com.example.chatapp_main.pojo.Applicant;
 import com.example.chatapp_main.pojo.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,7 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public List<Contact> getApplicantList(String receiver_id) {
+    public List<Applicant> getApplicantList(String receiver_id) {
         return contactDao.getApplicantList(receiver_id);
     }
 }

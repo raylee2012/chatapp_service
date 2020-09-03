@@ -1,5 +1,6 @@
 package com.example.chatapp_main.service;
 
+import com.example.chatapp_main.pojo.Applicant;
 import com.example.chatapp_main.pojo.Contact;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface ContactService {
 
     Contact selectContactByPrimaryKey(String contact_id);
 
-    List<Contact> getApplicantList(String receiver_id);
+    List<Applicant> getApplicantList(String receiver_id);
 }

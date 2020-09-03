@@ -1,5 +1,6 @@
 package com.example.chatapp_main.mapper;
 
+import com.example.chatapp_main.pojo.Applicant;
 import com.example.chatapp_main.pojo.Contact;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -17,5 +18,5 @@ public interface ContactMapper {
 
     void updateContactInfo(Contact contact);
 
-    List<Contact> getApplicantList(@Param("receiver_id") String receiver_id);
+    List<Applicant> getApplicantList(@Param("receiver_id") String receiver_id);
 }
