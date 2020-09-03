@@ -3,16 +3,15 @@ package com.example.chatapp_main.entity.vo;
 import com.example.chatapp_main.entity.Contact;
 import com.example.chatapp_main.entity.User;
 
-import java.util.List;
 
 public class Applicant extends Contact {
-    private List<User> user;
+    private User applicant;//申请人
 
-    public List<User> getUser() {
-        return user;
+    public User getApplicant() {
+        return applicant;
     }
 
-    public void setUser(List<User> user) {
-        this.user = user;
+    public void setApplicant(User applicant) {
+        this.applicant = applicant;
     }
 }
