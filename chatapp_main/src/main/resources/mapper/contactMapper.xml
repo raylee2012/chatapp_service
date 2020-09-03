@@ -10,6 +10,10 @@
     SELECT user.`user_id`,user.`user_name`,user.`imgurl`,user.`nick_name`,contact.`application_content`,contact.`status`,contact.`update_time` FROM user,contact WHERE user.`user_id`=contact.`applicant_id` AND contact.`receiver_id`=#{receiver_id};
   </select>
 
+  <select id="getFriendList" resultType="com.example.chatapp_main.entity.vo.Friend">
+    SELECT user.`user_id`,user.`user_name`,user.`imgurl`,user.`nick_name`,contact.`update_time` FROM user,contact WHERE user.`user_id`=contact.`applicant_id` AND contact.`receiver_id`=#{receiver_id} AND  contact.`status`=#{status};
+  </select>
+
   <select id="selectContactByPrimaryKey" resultType="com.example.chatapp_main.entity.Contact">
     select * from contact where contact_id=#{contact_id}
   </select>

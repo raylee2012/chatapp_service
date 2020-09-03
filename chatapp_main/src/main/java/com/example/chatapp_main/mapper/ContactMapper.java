@@ -2,6 +2,7 @@ package com.example.chatapp_main.mapper;
 
 import com.example.chatapp_main.entity.vo.Applicant;
 import com.example.chatapp_main.entity.Contact;
+import com.example.chatapp_main.entity.vo.Friend;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,4 +20,6 @@ public interface ContactMapper {
     void updateContactInfo(Contact contact);
 
     List<Applicant> getApplicantList(@Param("receiver_id") String receiver_id);
+
+    List<Friend> getFriendList(@Param("receiver_id") String receiver_id,@Param("status")  String status);
 }

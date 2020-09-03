@@ -1,5 +1,6 @@
 package com.example.chatapp_main.dao;
 
+import com.example.chatapp_main.entity.vo.Friend;
 import com.example.chatapp_main.mapper.ContactMapper;
 import com.example.chatapp_main.entity.vo.Applicant;
 import com.example.chatapp_main.entity.Contact;
@@ -42,5 +43,9 @@ public class ContactDao {
 
     public List<Applicant> getApplicantList(String receiver_id){
         return contactMapper.getApplicantList(receiver_id);
+    }
+
+    public List<Friend> getFriendList(String receiver_id,String status){
+        return contactMapper.getFriendList(receiver_id,status);
     }
 }

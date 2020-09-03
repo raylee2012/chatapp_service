@@ -63,4 +63,18 @@ public class ContactController {
         return response;
     }
 
+    @PostMapping("/getFriendList")
+    public Response getFriendList(@RequestBody Map map){
+        Response response = new Response();
+        String receiver_id = (String) map.get("receiver_id");
+        String status = (String) map.get("status");
+        if(TextUtils.isEmpty(receiver_id)||TextUtils.isEmpty(status)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            response.setStatus(Status.OK);
+            response.setData(contactService.getFriendList(receiver_id,status));
+        }
+        return response;
+    }
+
 }
