@@ -5,13 +5,13 @@ import com.example.chatapp_main.entity.User;
 
 
 public class Applicant extends Contact {
-    private User applicant;//申请人
+    private User applicantUser;//申请人
 
-    public User getApplicant() {
-        return applicant;
+    public User getApplicantUser() {
+        return applicantUser;
     }
 
-    public void setApplicant(User applicant) {
-        this.applicant = applicant;
+    public void setApplicantUser(User applicantUser) {
+        this.applicantUser = applicantUser;
     }
 }
