@@ -46,13 +46,13 @@ CREATE TABLE `group_member` (
   `group_member_id` VARCHAR(50) NOT NULL COMMENT '群成员编号',
   `group_member_user_id` VARCHAR(50) DEFAULT NULL COMMENT '群成员用户编号',
   `group_note` VARCHAR(500) DEFAULT NULL COMMENT '群备注',
-  `group_disturb` CHAR (1) not NULL DEFAULT '0' COMMENT '0未开启消息免打扰,1开启消息免打扰',
-  `group_to_contact` CHAR (1) not NULL DEFAULT '0' COMMENT '0不保存到通讯录,1保存到通讯录',
-  `group_top` CHAR (1)  not NULL DEFAULT '0' COMMENT '0消息未置顶,1消息置顶',
+  `group_disturb` CHAR (1) NOT NULL DEFAULT '0' COMMENT '0未开启消息免打扰,1开启消息免打扰',
+  `group_to_contact` CHAR (1) NOT NULL DEFAULT '0' COMMENT '0不保存到通讯录,1保存到通讯录',
+  `group_top` CHAR (1)  NOT NULL DEFAULT '0' COMMENT '0消息未置顶,1消息置顶',
   `group_nick_name` VARCHAR(50) DEFAULT NULL COMMENT '个人设置的群昵称',
   `group_top_update_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '消息置顶状态更新时间',
   `create_time` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
-  `update_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `update_time` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`group_member_id`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8
 
