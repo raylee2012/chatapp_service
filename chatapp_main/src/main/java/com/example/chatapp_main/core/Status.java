@@ -6,6 +6,7 @@ public enum  Status {
     USERISREGISTER("error","用户名已注册"),
     USERNAMEORPADERROR("error","用户名或密码错误"),
     PARAMILLEGAL("error","参数不合法"),
+    UMCHATWITHMYSELF("error","暂时不支持和自己建群聊天"),
     NOLOGINNAME("error", "请提供用户名"),
     NOWEBSITENAME("error", "请提供网站名称"),
     ERROR("error","未知错误"),
