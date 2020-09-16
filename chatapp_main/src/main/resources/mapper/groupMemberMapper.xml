@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.chatapp_main.mapper.ContactMapper">
+
+  <insert id="insertSelective" parameterType="com.example.chatapp_main.entity.GroupMember">
+    insert into contact
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="group_member_id != null">
+        group_member_id,
+      </if>
+      <if test="group_member_user_id != null">
+        group_member_user_id,
+      </if>
+      <if test="group_note != null">
+        group_note,
+      </if>
+      <if test="group_disturb != null">
+        group_disturb,
+      </if>
+      <if test="group_to_contact != null">
+        group_to_contact,
+      </if>
+      <if test="group_top != null">
+        group_top,
+      </if>
+      <if test="group_nick_name != null">
+        group_nick_name,
+      </if>
+      <if test="group_top_update_time != null">
+        group_top_update_time,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="group_member_id != null">
+        #{group_member_id},
+      </if>
+      <if test="group_member_user_id != null">
+        #{group_member_user_id},
+      </if>
+      <if test="group_note != null">
+        #{group_notice},
+      </if>
+      <if test="group_disturb != null">
+        #{group_disturb},
+      </if>
+      <if test="group_to_contact != null">
+        #{group_to_contact},
+      </if>
+      <if test="group_top != null">
+        #{group_top},
+      </if>
+      <if test="group_nick_name != null">
+        #{group_nick_name},
+      </if>
+      <if test="group_top_update_time != null">
+        #{group_top_update_time},
+      </if>
+      <if test="create_time != null">
+        #{create_time},
+      </if>
+      <if test="update_time != null">
+        #{update_time},
+      </if>
+    </trim>
+  </insert>
+</mapper>
