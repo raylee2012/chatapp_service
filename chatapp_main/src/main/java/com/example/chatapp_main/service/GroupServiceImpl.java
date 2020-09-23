@@ -20,4 +20,9 @@ public class GroupServiceImpl implements GroupService{
         group_member_user_ids.add(create_user_id);
         groupMemberDao.addGroupMembers(group_id,group_member_user_ids);
     }
+
+    @Override
+    public void updateGroupInfo(String group_id, String group_name, String group_notice) {
+        groupDao.updateGroupInfo(group_id,group_name,group_notice);
+    }
 }

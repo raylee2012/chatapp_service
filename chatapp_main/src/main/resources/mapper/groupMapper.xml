@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.chatapp_main.mapper.GroupMapper">
 
+  <update id="updateGroupInfo" parameterType="com.example.chatapp_main.entity.Group">
+    update `group`
+    <trim prefix="set" suffixOverrides=",">
+      <if test="group_name!=null">group_name=#{group_name},</if>
+      <if test="group_notice!=null">group_notice=#{group_notice},</if>
+      <if test="update_time!=null">update_time=#{update_time},</if>
+    </trim>
+    WHERE group_id=#{group_id}
+  </update>
+
   <insert id="insertSelective" parameterType="com.example.chatapp_main.entity.Group">
     insert into `group`
     <trim prefix="(" suffix=")" suffixOverrides=",">

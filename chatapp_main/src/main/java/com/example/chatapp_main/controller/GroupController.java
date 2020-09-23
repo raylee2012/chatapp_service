@@ -5,12 +5,12 @@ import com.example.chatapp_main.core.Status;
 import com.example.chatapp_main.service.GroupService;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -21,8 +21,8 @@ public class GroupController {
     @Autowired
     GroupService groupService;
 
-    @RequestMapping("/add")
-    public Response addGroup(@RequestBody Map map){
+    @PostMapping("/cteateGroup")
+    public Response createGroup(@RequestBody Map map){
         Response response=new Response();
         String create_user_id = (String) map.get("create_user_id");
         String member_user_ids = (String) map.get("member_user_ids");
@@ -39,6 +39,21 @@ public class GroupController {
                 }
             }
             groupService.createGroup(create_user_id, idList);
+            response.setStatus(Status.OK);
+        }
+        return response;
+    }
+
+    @PostMapping("/updateGroupInfo")
+    public Response updateGroupInfo(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String group_name = (String) map.get("group_name");
+        String group_notice = (String) map.get("group_notice");
+        if(TextUtils.isEmpty(group_id)||(TextUtils.isEmpty(group_name)&&TextUtils.isEmpty(group_notice))){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            groupService.updateGroupInfo(group_id,group_name, group_notice);
             response.setStatus(Status.OK);
         }
         return response;

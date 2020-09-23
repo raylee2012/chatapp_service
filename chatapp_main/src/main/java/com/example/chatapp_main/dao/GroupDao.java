@@ -25,5 +25,13 @@ public class GroupDao {
         return group.getGroup_id();
     }
 
+    public void updateGroupInfo(String group_id,String group_name, String group_notice){
+        Group group = new Group();
+        group.setGroup_id(group_id);
+        group.setGroup_name(group_name);
+        group.setGroup_notice(group_notice);
+        group.setUpdate_time(new Date());
+        groupMapper.updateGroupInfo(group);
+    }
 
 }
