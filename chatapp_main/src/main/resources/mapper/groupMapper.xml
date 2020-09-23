@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.chatapp_main.mapper.ContactMapper">
+<mapper namespace="com.example.chatapp_main.mapper.GroupMapper">
 
   <insert id="insertSelective" parameterType="com.example.chatapp_main.entity.Group">
-    insert into contact
+    insert into `group`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="group_id != null">
         group_id,

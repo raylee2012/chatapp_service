@@ -16,10 +16,10 @@ public class GroupDao {
 
     public String createGroup(String create_user_id){
         Group group = new Group();
+        group.setGroup_id(StringUtil.newGUID());
         group.setCreate_time(new Date());
         group.setUpdate_time(new Date());
         group.setCreate_user_id(create_user_id);
-        group.setGroup_id(StringUtil.newGUID());
         groupMapper.insertSelective(group);
 
         return group.getGroup_id();

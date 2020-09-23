@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -28,13 +30,15 @@ public class GroupController {
             response.setStatus(Status.PARAMILLEGAL);
         }else{
             String[] ids = member_user_ids.split(",");
+            List<String> idList=new ArrayList<>();
             for(String id:ids){
+                idList.add(id);
                 if(create_user_id.equals(id)){
                     response.setStatus(Status.UMCHATWITHMYSELF);
                     return response;
                 }
             }
-            groupService.createGroup(create_user_id, Arrays.asList(ids));
+            groupService.createGroup(create_user_id, idList);
             response.setStatus(Status.OK);
         }
         return response;
