@@ -2,16 +2,22 @@ package com.example.chatapp_main.controller;
 
 import com.example.chatapp_main.core.Response;
 import com.example.chatapp_main.core.Status;
+import com.example.chatapp_main.service.GroupService;
 import org.apache.http.util.TextUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/group")
 public class GroupController {
+
+    @Autowired
+    GroupService groupService;
 
     @RequestMapping("/add")
     public Response addGroup(@RequestBody Map map){
@@ -28,8 +34,8 @@ public class GroupController {
                     return response;
                 }
             }
-
-
+            groupService.createGroup(create_user_id, Arrays.asList(ids));
+            response.setStatus(Status.OK);
         }
         return response;
     }

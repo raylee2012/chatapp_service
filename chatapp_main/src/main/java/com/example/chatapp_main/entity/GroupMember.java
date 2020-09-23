@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class GroupMember {
     private String group_member_id;//'群成员编号',
+    private String group_id;//所属群编号
     private String group_member_user_id;//'群成员用户编号',
     private String group_note;// '群备注',
     private String group_disturb;// '0未开启消息免打扰,1开启消息免打扰',
@@ -25,6 +26,14 @@ public class GroupMember {
 
     public void setGroup_member_id(String group_member_id) {
         this.group_member_id = group_member_id;
+    }
+
+    public String getGroup_id() {
+        return group_id;
+    }
+
+    public void setGroup_id(String group_id) {
+        this.group_id = group_id;
     }
 
     public String getGroup_member_user_id() {

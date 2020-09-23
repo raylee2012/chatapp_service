@@ -44,6 +44,7 @@ CREATE TABLE `group` (
 #新建群成员表
 CREATE TABLE `group_member` (
   `group_member_id` VARCHAR(50) NOT NULL COMMENT '群成员编号',
+  `group_id` VARCHAR(50) NOT NULL COMMENT '所属群编号',
   `group_member_user_id` VARCHAR(50) DEFAULT NULL COMMENT '群成员用户编号',
   `group_note` VARCHAR(500) DEFAULT NULL COMMENT '群备注',
   `group_disturb` CHAR (1) NOT NULL DEFAULT '0' COMMENT '0未开启消息免打扰,1开启消息免打扰',
