@@ -14,6 +14,10 @@ public class GroupDao {
     @Autowired
     GroupMapper groupMapper;
 
+    public Group selectByGroupId(String group_id){
+       return groupMapper.selectByGroupId(group_id);
+    }
+
     public String createGroup(String create_user_id){
         Group group = new Group();
         group.setGroup_id(StringUtil.newGUID());
@@ -32,6 +36,10 @@ public class GroupDao {
         group.setGroup_notice(group_notice);
         group.setUpdate_time(new Date());
         groupMapper.updateGroupInfo(group);
+    }
+
+    public void exitGroup(String group_id, String group_member_user_id){
+
     }
 
 }

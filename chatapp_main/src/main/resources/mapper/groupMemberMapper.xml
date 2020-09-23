@@ -2,8 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.chatapp_main.mapper.GroupMemberMapper">
 
+  <delete id="exitGroup">
+    delete from `group_member` where group_id = #{group_id} and group_member_user_id = #{group_member_user_id} and
+  </delete>
+
+
   <insert id="insertSelective" parameterType="com.example.chatapp_main.entity.GroupMember">
-    insert into `group_member` 
+    insert into `group_member`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="group_member_id != null">
         group_member_id,

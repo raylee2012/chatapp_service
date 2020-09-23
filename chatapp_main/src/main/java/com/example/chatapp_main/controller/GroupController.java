@@ -54,9 +54,23 @@ public class GroupController {
             response.setStatus(Status.PARAMILLEGAL);
         }else{
             groupService.updateGroupInfo(group_id,group_name, group_notice);
+            response.setData(groupService.selectByGroupId(group_id));
             response.setStatus(Status.OK);
         }
         return response;
     }
 
+    @PostMapping("/exitGroup")
+    public Response exitGroup(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String group_member_user_id = (String) map.get("group_member_user_id");
+        if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(group_member_user_id)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            groupService.exitGroup(group_id,group_member_user_id);
+            response.setStatus(Status.OK);
+        }
+        return response;
+    }
 }
