@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.chatapp_main.mapper.GroupMemberMapper">
 
+  <update id="updateGroupMemberInfo" parameterType="com.example.chatapp_main.entity.GroupMember">
+    update `group_member`
+    <trim prefix="set" suffixOverrides=",">
+      <if test="group_note!=null">group_note=#{group_note},</if>
+      <if test="group_nick_name!=null">group_nick_name=#{group_nick_name},</if>
+      <if test="group_disturb!=null">group_disturb=#{group_disturb},</if>
+      <if test="group_to_contact!=null">group_to_contact=#{group_to_contact},</if>
+      <if test="group_top!=null">group_top=#{group_top},</if>
+      <if test="group_top_update_time!=null">group_top_update_time=#{group_top_update_time},</if>
+      <if test="update_time!=null">update_time=#{update_time},</if>
+    </trim>
+    WHERE group_id=#{group_id} and group_member_user_id=#{group_member_user_id}
+  </update>
+
   <delete id="deleteByGroupid">
         delete from `group_member` where group_id = #{group_id}
   </delete>

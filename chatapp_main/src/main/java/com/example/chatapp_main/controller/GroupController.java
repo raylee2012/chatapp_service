@@ -123,5 +123,21 @@ public class GroupController {
         return response;
     }
 
+    @PostMapping("/changDisturb")
+    public Response changDisturb(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String member_user_id = (String) map.get("member_user_id");
+        String group_disturb = (String) map.get("group_disturb");
+        if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(member_user_id)||
+                TextUtils.isEmpty(group_disturb)||(!"0".equals(group_disturb)&&!"1".equals(group_disturb))){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            groupService.changDisturb(group_id,member_user_id,group_disturb);
+            response.setStatus(Status.OK);
+        }
+        return response;
+    }
+
 
 }

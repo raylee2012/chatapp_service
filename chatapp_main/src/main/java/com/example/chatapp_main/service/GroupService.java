@@ -19,4 +19,6 @@ public interface GroupService {
     void deleteGroup(String group_id);
 
     void addMembers(String group_id,List<String> member_user_ids);
+
+    void changDisturb(String group_id,String member_user_id,String group_disturb);
 }

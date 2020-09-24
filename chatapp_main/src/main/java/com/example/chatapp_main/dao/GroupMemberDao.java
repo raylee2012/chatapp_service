@@ -35,4 +35,8 @@ public class GroupMemberDao {
     public void deleteByGroupid(String group_id){
         groupMemberMapper.deleteByGroupid(group_id);
     }
+
+    public void updateGroupMemberInfo(GroupMember groupMember){
+        groupMemberMapper.updateGroupMemberInfo(groupMember);
+    }
 }

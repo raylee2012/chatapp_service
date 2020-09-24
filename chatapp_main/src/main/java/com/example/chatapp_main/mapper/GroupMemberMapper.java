@@ -12,4 +12,6 @@ public interface GroupMemberMapper {
     void exitGroup(@Param("group_id") String group_id, @Param("group_member_user_id") String group_member_user_id);
 
     void deleteByGroupid(@Param("group_id") String group_id);
+
+    void updateGroupMemberInfo(GroupMember groupMember);
 }

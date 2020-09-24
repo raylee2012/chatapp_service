@@ -3,9 +3,11 @@ package com.example.chatapp_main.service;
 import com.example.chatapp_main.dao.GroupDao;
 import com.example.chatapp_main.dao.GroupMemberDao;
 import com.example.chatapp_main.entity.Group;
+import com.example.chatapp_main.entity.GroupMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,5 +48,15 @@ public class GroupServiceImpl implements GroupService{
     @Override
     public void addMembers(String group_id, List<String> member_user_ids) {
         groupMemberDao.addGroupMembers(group_id, member_user_ids);
+    }
+
+    @Override
+    public void changDisturb(String group_id, String member_user_id, String group_disturb) {
+        GroupMember groupMember = new GroupMember();
+        groupMember.setGroup_id(group_id);
+        groupMember.setGroup_member_user_id(member_user_id);
+        groupMember.setUpdate_time(new Date());
+        groupMember.setGroup_disturb(group_disturb);
+        groupMemberDao.updateGroupMemberInfo(groupMember);
     }
 }
