@@ -2,8 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.chatapp_main.mapper.GroupMapper">
 
+  <delete id="deleteByGroupid">
+    delete from `group` where group_id = #{group_id}
+  </delete>
+
   <select id="selectByGroupId" resultType="com.example.chatapp_main.entity.Group">
-    select * from contact where group_id=#{group_id}
+    select * from `group` where group_id=#{group_id}
   </select>
 
   <update id="updateGroupInfo" parameterType="com.example.chatapp_main.entity.Group">

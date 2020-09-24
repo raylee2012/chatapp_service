@@ -28,5 +28,11 @@ public class GroupMemberDao {
         }
     }
 
-    
+    public void exitGroup(String group_id, String group_member_user_id){
+        groupMemberMapper.exitGroup(group_id,group_member_user_id);
+    }
+
+    public void deleteByGroupid(String group_id){
+        groupMemberMapper.deleteByGroupid(group_id);
+    }
 }

@@ -2,8 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.chatapp_main.mapper.GroupMemberMapper">
 
+  <delete id="deleteByGroupid">
+        delete from `group_member` where group_id = #{group_id}
+  </delete>
+
   <delete id="exitGroup">
-    delete from `group_member` where group_id = #{group_id} and group_member_user_id = #{group_member_user_id} and
+    delete from `group_member` where group_id = #{group_id} and group_member_user_id = #{group_member_user_id}
   </delete>
 
 

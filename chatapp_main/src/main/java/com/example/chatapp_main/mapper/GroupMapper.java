@@ -12,4 +12,6 @@ public interface GroupMapper {
     void insertSelective(Group group);
 
     void updateGroupInfo(Group group);
+
+    void deleteByGroupid(String group_id);
 }

@@ -34,6 +34,17 @@ public class GroupServiceImpl implements GroupService{
 
     @Override
     public void exitGroup(String group_id, String group_member_user_id) {
-        groupDao.exitGroup(group_id,group_member_user_id);
+        groupMemberDao.exitGroup(group_id,group_member_user_id);
+    }
+
+    @Override
+    public void deleteGroup(String group_id) {
+        groupDao.deleteByGroupid(group_id);
+        groupMemberDao.deleteByGroupid(group_id);
+    }
+
+    @Override
+    public void addMembers(String group_id, List<String> member_user_ids) {
+        groupMemberDao.addGroupMembers(group_id, member_user_ids);
     }
 }

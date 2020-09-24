@@ -2,6 +2,7 @@ package com.example.chatapp_main.controller;
 
 import com.example.chatapp_main.core.Response;
 import com.example.chatapp_main.core.Status;
+import com.example.chatapp_main.entity.Group;
 import com.example.chatapp_main.service.GroupService;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +69,59 @@ public class GroupController {
         if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(group_member_user_id)){
             response.setStatus(Status.PARAMILLEGAL);
         }else{
-            groupService.exitGroup(group_id,group_member_user_id);
-            response.setStatus(Status.OK);
+            Group group = groupService.selectByGroupId(group_id);
+            if(group_member_user_id.equals(group.getCreate_user_id())){
+                response.setStatus(Status.PARAMILLEGAL);
+            }else{
+                groupService.exitGroup(group_id,group_member_user_id);
+                response.setStatus(Status.OK);
+            }
         }
         return response;
     }
+
+    @PostMapping("/deleteGroup")
+    public Response deleteGroup(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String create_user_id = (String) map.get("create_user_id");
+        if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(create_user_id)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            Group group = groupService.selectByGroupId(group_id);
+            if(create_user_id.equals(group.getCreate_user_id())){
+                groupService.deleteGroup(group_id);
+                response.setStatus(Status.OK);
+            }else{
+                response.setStatus(Status.PARAMILLEGAL);
+            }
+        }
+        return response;
+    }
+
+    @PostMapping("/addMembers")
+    public Response addMembers(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String member_user_ids = (String) map.get("member_user_ids");
+        if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(member_user_ids)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            Group group = groupService.selectByGroupId(group_id);
+            if(group==null){
+                response.setStatus(Status.PARAMILLEGAL);
+            }else{
+                String[] split = member_user_ids.split(",");
+                List<String> ids=new ArrayList<>();
+                for(String member_user_id:split){
+                    ids.add(member_user_id);
+                }
+                groupService.addMembers(group_id,ids);
+                response.setStatus(Status.OK);
+            }
+        }
+        return response;
+    }
+
+
 }

@@ -15,4 +15,8 @@ public interface GroupService {
     void updateGroupInfo(String group_id,String group_name, String group_notice);
 
     void exitGroup(String group_id,String group_member_user_id);
+
+    void deleteGroup(String group_id);
+
+    void addMembers(String group_id,List<String> member_user_ids);
 }
