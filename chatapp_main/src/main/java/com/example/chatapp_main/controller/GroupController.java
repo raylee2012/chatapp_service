@@ -139,5 +139,53 @@ public class GroupController {
         return response;
     }
 
+    @PostMapping("/saveToContact")
+    public Response saveToContact(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String member_user_id = (String) map.get("member_user_id");
+        String group_to_contact = (String) map.get("group_to_contact");
+        if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(member_user_id)||
+                TextUtils.isEmpty(group_to_contact)||(!"0".equals(group_to_contact)&&!"1".equals(group_to_contact))){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            groupService.saveToContact(group_id,member_user_id,group_to_contact);
+            response.setStatus(Status.OK);
+        }
+        return response;
+    }
+
+    @PostMapping("/setGroupTop")
+    public Response setGroupTop(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String member_user_id = (String) map.get("member_user_id");
+        String group_top = (String) map.get("group_top");
+        if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(member_user_id)||
+                TextUtils.isEmpty(group_top)||(!"0".equals(group_top)&&!"1".equals(group_top))){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            groupService.setGroupTop(group_id,member_user_id,group_top);
+            response.setStatus(Status.OK);
+        }
+        return response;
+    }
+
+    @PostMapping("/setGroupNickName")
+    public Response setGroupNickName(@RequestBody Map map){
+        Response response=new Response();
+        String group_id = (String) map.get("group_id");
+        String member_user_id = (String) map.get("member_user_id");
+        String group_nick_name = (String) map.get("group_nick_name");
+        if(TextUtils.isEmpty(group_id)||TextUtils.isEmpty(member_user_id)||
+                TextUtils.isEmpty(group_nick_name)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            groupService.setGroupNickName(group_id,member_user_id,group_nick_name);
+            response.setStatus(Status.OK);
+        }
+        return response;
+    }
+
 
 }

@@ -59,4 +59,35 @@ public class GroupServiceImpl implements GroupService{
         groupMember.setGroup_disturb(group_disturb);
         groupMemberDao.updateGroupMemberInfo(groupMember);
     }
+
+    @Override
+    public void saveToContact(String group_id, String member_user_id, String group_to_contact) {
+        GroupMember groupMember = new GroupMember();
+        groupMember.setGroup_id(group_id);
+        groupMember.setGroup_member_user_id(member_user_id);
+        groupMember.setUpdate_time(new Date());
+        groupMember.setGroup_to_contact(group_to_contact);
+        groupMemberDao.updateGroupMemberInfo(groupMember);
+    }
+
+    @Override
+    public void setGroupTop(String group_id, String member_user_id, String group_top) {
+        GroupMember groupMember = new GroupMember();
+        groupMember.setGroup_id(group_id);
+        groupMember.setGroup_member_user_id(member_user_id);
+        groupMember.setUpdate_time(new Date());
+        groupMember.setGroup_top_update_time(new Date());
+        groupMember.setGroup_top(group_top);
+        groupMemberDao.updateGroupMemberInfo(groupMember);
+    }
+
+    @Override
+    public void setGroupNickName(String group_id, String member_user_id, String group_nick_name) {
+        GroupMember groupMember = new GroupMember();
+        groupMember.setGroup_id(group_id);
+        groupMember.setGroup_member_user_id(member_user_id);
+        groupMember.setUpdate_time(new Date());
+        groupMember.setGroup_nick_name(group_nick_name);
+        groupMemberDao.updateGroupMemberInfo(groupMember);
+    }
 }

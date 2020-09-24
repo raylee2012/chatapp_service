@@ -21,4 +21,10 @@ public interface GroupService {
     void addMembers(String group_id,List<String> member_user_ids);
 
     void changDisturb(String group_id,String member_user_id,String group_disturb);
+
+    void saveToContact(String group_id,String member_user_id,String group_to_contact);
+
+    void setGroupTop(String group_id,String member_user_id,String group_top);
+
+    void setGroupNickName(String group_id,String member_user_id,String group_nick_name);
 }
