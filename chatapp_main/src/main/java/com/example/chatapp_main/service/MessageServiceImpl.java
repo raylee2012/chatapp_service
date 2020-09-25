@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class MessageServiceImpl implements MessageService{
@@ -30,5 +31,11 @@ public class MessageServiceImpl implements MessageService{
         message.setMessage_revocation("1");
         message.setUpdate_time(new Date());
         messageDao.updateMessageInfo(message);
+    }
+
+    @Override
+    public List<Message> getMessageList(String message_group_id) {
+
+        return messageDao.getMessageList(message_group_id);
     }
 }

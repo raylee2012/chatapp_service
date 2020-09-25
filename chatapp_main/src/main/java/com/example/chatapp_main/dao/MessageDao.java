@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class MessageDao {
@@ -26,5 +27,9 @@ public class MessageDao {
 
     public void updateMessageInfo(Message message){
         messageMapper.updateMessageInfo(message);
+    }
+
+    public List<Message> getMessageList(String message_group_id){
+        return messageMapper.getMessageList(message_group_id);
     }
 }

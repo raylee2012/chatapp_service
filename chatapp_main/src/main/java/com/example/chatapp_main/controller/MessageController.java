@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/message")
 public class MessageController {
@@ -35,6 +37,7 @@ public class MessageController {
             message.setMessage_id(StringUtil.newGUID());
             message.setMessage_create_user_id(message_create_user_id);
             message.setMessage_group_id(message_group_id);
+            message.setMessage_type(message_type);
             if(file!=null){
                 UploadFileResponse uploadFile = fileController.uploadFile(file);
                 message.setMessage_attach_url(uploadFile.getFileDownloadUri());
@@ -51,8 +54,8 @@ public class MessageController {
     }
 
     @PostMapping("/revocationMessage")
-    public Response revocationMessage(@RequestHeader("token") String token,
-                                @RequestParam(value = "message_id") String message_id){
+    public Response revocationMessage(@RequestBody Map map){
+        String message_id = (String) map.get("message_id");
         Response response = new Response();
         if(TextUtils.isEmpty(message_id)){
             response.setStatus(Status.PARAMILLEGAL);
@@ -60,6 +63,19 @@ public class MessageController {
             messageService.revocationMessage(message_id);
             response.setStatus(Status.OK);
             response.setData(messageService.selectUserByPrimaryKey(message_id));
+        }
+        return response;
+    }
+
+    @PostMapping("/getMessageList")
+    public Response getMessageList(@RequestBody Map map){
+        String message_group_id = (String) map.get("message_group_id");
+        Response response = new Response();
+        if(TextUtils.isEmpty(message_group_id)){
+            response.setStatus(Status.PARAMILLEGAL);
+        }else{
+            response.setStatus(Status.OK);
+            response.setData(messageService.getMessageList(message_group_id));
         }
         return response;
     }
