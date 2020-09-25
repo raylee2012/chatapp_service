@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.chatapp_main.mapper.MessageMapper">
+
+    <select id="selectUserByPrimaryKey" resultType="com.example.chatapp_main.entity.Message">
+        select * from `message` where message_id=#{message_id}
+    </select>
+
+    <update id="updateMessageInfo" parameterType="com.example.chatapp_main.entity.Message">
+        update `message`
+        <trim prefix="set" suffixOverrides=",">
+            <if test="message_revocation!=null">message_revocation=#{message_revocation},</if>
+            <if test="update_time!=null">update_time=#{update_time},</if>
+        </trim>
+        WHERE message_id=#{message_id}
+    </update>
+
+
+    <insert id="insertSelective" parameterType="com.example.chatapp_main.entity.Message">
+        insert into `message`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="message_id != null">
+                message_id,
+            </if>
+            <if test="message_group_id != null">
+                message_group_id,
+            </if>
+            <if test="message_create_user_id != null">
+                message_create_user_id,
+            </if>
+            <if test="message_content != null">
+                message_content,
+            </if>
+            <if test="message_attach_url != null">
+                message_attach_url,
+            </if>
+            <if test="group_to_contact != null">
+                group_to_contact,
+            </if>
+            <if test="message_attach_name != null">
+                message_attach_name,
+            </if>
+            <if test="message_attach_size != null">
+                message_attach_size,
+            </if>
+            <if test="message_revocation != null">
+                message_revocation,
+            </if>
+            <if test="message_type != null">
+                message_type,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="message_id != null">
+                #{message_id},
+            </if>
+            <if test="message_group_id != null">
+                #{message_group_id},
+            </if>
+            <if test="message_create_user_id != null">
+                #{message_create_user_id},
+            </if>
+            <if test="message_content != null">
+                #{message_content},
+            </if>
+            <if test="message_attach_url != null">
+                #{message_attach_url},
+            </if>
+            <if test="group_to_contact != null">
+                #{group_to_contact},
+            </if>
+            <if test="message_attach_name != null">
+                #{message_attach_name},
+            </if>
+            <if test="message_attach_size != null">
+                #{message_attach_size},
+            </if>
+            <if test="message_revocation != null">
+                #{message_revocation},
+            </if>
+            <if test="message_type != null">
+                #{message_type},
+            </if>
+            <if test="create_time != null">
+                #{create_time},
+            </if>
+            <if test="update_time != null">
+                #{update_time},
+            </if>
+        </trim>
+    </insert>
+</mapper>
