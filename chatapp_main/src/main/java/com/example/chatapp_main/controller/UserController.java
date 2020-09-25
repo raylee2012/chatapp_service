@@ -6,6 +6,7 @@ import com.example.chatapp_main.core.UploadFileResponse;
 import com.example.chatapp_main.entity.User;
 import com.example.chatapp_main.entity.vo.FindUser;
 import com.example.chatapp_main.service.UserService;
+import io.swagger.annotations.*;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
+@Api(value = "用户管理类")
 public class UserController {
 
     @Autowired
@@ -23,6 +25,7 @@ public class UserController {
     FileController fileController;
 
     @PostMapping("/register")
+    @ApiOperation(value = "注册")
     public Response register(@RequestBody Map map){
         String user_name = (String) map.get("user_name");
         String password = (String) map.get("password");
@@ -43,6 +46,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @ApiOperation(value = "登陆")
     public Response login(@RequestBody Map map){
         String username = (String) map.get("user_name");
         String password = (String) map.get("password");
@@ -62,6 +66,7 @@ public class UserController {
     }
 
     @PostMapping("/updateUserInfo")
+    @ApiOperation(value = "更新用户信息")
     public Response updateUserInfo(@RequestHeader("token") String token,
                                     @RequestParam(value = "user_id") String user_id, @RequestParam(value = "nick_name",  required=false) String nickname,
                                    @RequestParam(value = "password",required=false) String password, @RequestParam(value = "tel", required=false)String tel,
@@ -88,6 +93,7 @@ public class UserController {
     }
 
     @PostMapping("/findUser")
+    @ApiOperation(value = "查询用户信息")
     public Response addContact(@RequestBody Map map){
         Response response = new Response();
         String user_name = (String) map.get("user_name");
