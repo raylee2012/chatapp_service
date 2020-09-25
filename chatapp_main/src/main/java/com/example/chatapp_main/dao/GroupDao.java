@@ -18,7 +18,7 @@ public class GroupDao {
        return groupMapper.selectByGroupId(group_id);
     }
 
-    public String createGroup(String create_user_id){
+    public Group createGroup(String create_user_id){
         Group group = new Group();
         group.setGroup_id(StringUtil.newGUID());
         group.setCreate_time(new Date());
@@ -26,7 +26,7 @@ public class GroupDao {
         group.setCreate_user_id(create_user_id);
         groupMapper.insertSelective(group);
 
-        return group.getGroup_id();
+        return group;
     }
 
     public void updateGroupInfo(String group_id,String group_name, String group_notice){

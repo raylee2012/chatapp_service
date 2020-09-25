@@ -23,10 +23,11 @@ public class GroupServiceImpl implements GroupService{
     }
 
     @Override
-    public void createGroup(String create_user_id, List<String> group_member_user_ids) {
-        String group_id = groupDao.createGroup(create_user_id);
+    public Group createGroup(String create_user_id, List<String> group_member_user_ids) {
+        Group group = groupDao.createGroup(create_user_id);
         group_member_user_ids.add(create_user_id);
-        groupMemberDao.addGroupMembers(group_id,group_member_user_ids);
+        groupMemberDao.addGroupMembers(group.getGroup_id(),group_member_user_ids);
+        return group;
     }
 
     @Override

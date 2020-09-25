@@ -39,7 +39,7 @@ public class GroupController {
                     return response;
                 }
             }
-            groupService.createGroup(create_user_id, idList);
+            response.setData(groupService.createGroup(create_user_id, idList));
             response.setStatus(Status.OK);
         }
         return response;
