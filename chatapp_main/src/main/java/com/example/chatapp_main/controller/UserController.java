@@ -8,6 +8,7 @@ import com.example.chatapp_main.entity.vo.FindUser;
 import com.example.chatapp_main.service.UserService;
 import io.swagger.annotations.*;
 import org.apache.http.util.TextUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +19,9 @@ import java.util.Map;
 @RequestMapping("/user")
 @Api(value = "用户管理类")
 public class UserController {
+
+    private static Logger log = Logger.getLogger(UserController.class);
+
 
     @Autowired
     UserService userService;
@@ -42,6 +46,7 @@ public class UserController {
                 response.setStatus(Status.OK);
             }
         }
+        log.warn("url:"+"/register;"+"param:"+map+";response:"+response);
         return response;
     }
 
